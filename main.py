@@ -1,6 +1,9 @@
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 import pandas as pd
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics.pairwise import cosine_similarity
+import numpy as np
 
 #consulta 1
 df_developer = pd.read_parquet("./endpoints parquet/games_developer.parquet")
@@ -149,3 +152,39 @@ def developer_reviews_analysis(developer: str):
     
     
     return developer, diccionario
+
+#Modelo de recomendación ML
+
+
+
+@app.get("/Sistema_de_recomendacion/{item_id}")
+def recomendacion_de_juegos (item_id:int):
+
+    df_final = pd.read_parquet("C:/Users/saulz/proyecto_individual/endpoints parquet/df_final.parquet")
+    df_final = df_final.reset_index(drop=True)
+
+    #Se Filtran características numéricas para el cálculo de similitud.
+    numeric_features = df_final.select_dtypes(include=[np.number]).columns.tolist()
+    similarity_matrix = cosine_similarity(df_final[numeric_features].fillna(0))
+    similarity_matrix = np.nan_to_num(similarity_matrix)
+ 
+    if item_id not in df_final['item_id'].values:
+        return f"No recommendations found: {item_id} is not in the data."
+
+    game_idx = df_final.index[df_final['item_id'] == item_id].tolist()
+    if not game_idx:
+        return f"No recommendations found: Game with ID {item_id} not found in data."
+    game_idx = game_idx[0]
+
+    #Se da una puntuación de similitud y clasificación
+    similarity_scores = list(enumerate(similarity_matrix[game_idx]))
+    similarity_scores = sorted(similarity_scores, key=lambda x: x[1], reverse=True)
+    top_n = 5
+    similar_games_indices = [i for i, score in similarity_scores[1:top_n+1]]
+    similar_game_names = df_final['app_name'].iloc[similar_games_indices].tolist()
+
+
+    input_game_name = df_final['app_name'].iloc[game_idx]
+    recommendation_message = f"Recommended games based on game ID {item_id} - {input_game_name}:"
+    
+    return [recommendation_message] + similar_game_names
