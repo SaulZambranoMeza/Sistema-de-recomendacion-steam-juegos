@@ -22,12 +22,19 @@ Realizar un análisis de datos exploratorios (EDA) y entrene un modelo de aprend
 
 Funcionalidad API
 
+![image](https://github.com/SaulZambranoMeza/Sistema-de-recomendacion-steam-juegos/assets/99093279/ffd83bf0-1e8a-4cb9-9edc-9b65b14a9d3c)
+
+
 El framework FastAPI se utilizó para crear una API que ofreciera puntos finales específicos:
 
 **PlayTimeGenre(genre: str):** identifica el año más popular para un género determinado.
+
 **UserForGenre(genre: str):** busca el usuario principal y su tiempo de reproducción anual para un género específico.
+
 **UsersRecommend(año: int):** enumera los tres juegos más recomendados por los usuarios para un año en particular.
+
 **UsersNotRecommend(año: int):** destaca los tres juegos principales con menos recomendaciones para un año específico.
+
 **sentiment_analysis(year: int):** analiza los sentimientos de las reseñas de los usuarios según el año de lanzamiento del juego.
 
 Aprendizaje automático:
