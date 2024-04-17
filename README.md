@@ -1,4 +1,5 @@
 # A Sistema de recomendación de juegos STEAM.
+![image](https://github.com/SaulZambranoMeza/Sistema-de-recomendacion-steam-juegos/assets/99093279/36d496e0-7e66-486d-ae3c-0775931203af)
 
 
 
@@ -8,9 +9,12 @@ El presente proyecto está dedicado a crear un motor de recomendación de juegos
 
 Iniciar un nuevo rol como Científico de Datos en Steam, una de las principales plataformas multinacionales de videojuegos, promete una emocionante travesía en el mundo del análisis de datos. Sin embargo, el entusiasmo inicial se ve desafiado de inmediato por la cruda realidad: la tarea urgente de crear un **sistema de recomendación de videojuegos** para los usuarios de Steam. Al sumergirte en los datos disponibles, te enfrentas a un panorama desolador: la falta de madurez de los mismos es evidente, con estructuras anidadas y carentes de formato definido. La ausencia total de procesos automatizados para la actualización de nuevos productos. 
 
+![image](https://github.com/SaulZambranoMeza/Sistema-de-recomendacion-steam-juegos/assets/99093279/f687f524-d711-4669-893c-f36458f147fc)
+
+
 ## A Objetivos
 
-Mi trabajo como científico de datos, consiste en afrontar el complejo desafío de desarrollar un sistema de recomendación de videojuegos centrado en el usuario
+Mi trabajo como científico de datos, consiste en afrontar el complejo desafío de desarrollar un sistema de recomendación de videojuegos centrado en el usuario.
 
 Crear un sistema de recomendación de videojuegos basado en datos para Steam, incorporando una API fácil de usar con FastAPI para un acceso perfecto a sugerencias personalizadas.
 
